@@ -1,0 +1,165 @@
+{
+ "anomalyDetection": {
+  "loadingTimeThresholds": {
+   "enabled": false,
+   "thresholds": [
+    {
+     "type": "TOTAL",
+     "valueMs": 0
+    }
+   ]
+  },
+  "outageHandling": {
+   "globalOutage": true,
+   "localOutage": false,
+   "localOutagePolicy": {
+    "affectedLocations": null,
+    "consecutiveRuns": null
+   }
+  }
+ },
+ "automaticallyAssignedApps": [],
+ "createdFrom": "GUI",
+ "enabled": true,
+ "entityId": "HTTP_CHECK-08C042D66EB0D953",
+ "frequencyMin": 1,
+ "locations": [
+  "SYNTHETIC_LOCATION-55D54F4C830E60C3"
+ ],
+ "managementZones": [
+  {
+   "id": "-7800457856673655849",
+   "env.mgmtzone.name": "{{ .env.mgmtzone.name }}"
+  }
+ ],
+ "manuallyAssignedApps": [],
+ "name": "{{.name}}",
+ "requests": [
+  {
+   "entityId": "HTTP_CHECK_STEP-62D6B5DF76090166",
+   "env.name.admin": "{{ .env.name.admin }}",
+   "sequenceNumber": 1
+  },
+  {
+   "entityId": "HTTP_CHECK_STEP-33A5910D43608EDF",
+   "env.name.services": "{{ .env.name.services }}",
+   "sequenceNumber": 2
+  },
+  {
+   "entityId": "HTTP_CHECK_STEP-75CA1CE8F7EB7515",
+   "env.name.on-prem": "{{ .env.name.on-prem }}",
+   "sequenceNumber": 3
+  },
+  {
+   "entityId": "HTTP_CHECK_STEP-6549B1E07530DF0E",
+   "env.name.identity.on-prem": "{{ .env.name.identity.on-prem }}",
+   "sequenceNumber": 4
+  }
+ ],
+ "script": {
+  "requests": [
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "",
+    "method": "GET",
+    "env.admin.url": "{{ .env.admin.url }}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   },
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "",
+    "method": "GET",
+    "env.services.url": "{{ .env.services.url }}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   },
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "",
+    "method": "GET",
+    "env.on-prem.url": "{{ .env.on-prem.url }}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": true,
+       "type": "patternConstraint",
+       "value": "PASSED"
+      },
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   },
+   {
+    "configuration": {
+     "acceptAnyCertificate": true,
+     "followRedirects": true
+    },
+    "description": "",
+    "method": "GET",
+    "env.identity.on-prem.url": "{{ .env.identity.on-prem.url }}",
+    "validation": {
+     "rules": [
+      {
+       "passIfFound": true,
+       "type": "patternConstraint",
+       "value": "OK"
+      },
+      {
+       "passIfFound": false,
+       "type": "httpStatusesList",
+       "value": "\u003e=400"
+      }
+     ],
+     "rulesChaining": "or"
+    }
+   }
+  ],
+  "version": "1.0"
+ },
+ "tags": [
+  {
+   "context": "CONTEXTLESS",
+   "key": "Type",
+   "source": "USER",
+   "value": "Cloud2.0"
+  },
+  {
+   "context": "CONTEXTLESS",
+   "key": "Environment",
+   "source": "USER",
+   "value": "dev"
+  }
+ ],
+ "type": "HTTP"
+}
