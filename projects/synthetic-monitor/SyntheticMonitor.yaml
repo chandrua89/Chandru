@@ -1,15 +1,9 @@
 config:
- - SyntheticMonitor: SyntheticMonitor.json	
-managementZones:
- - env.mgmtzone.name: "f2bmon-dev"
-env.filename:
- - env.filename: "SynMonitor"	
-SyntheticMonitor:
- - env.name.admin: "/middleware/admin/"
- - env.admin.url: "https://f2bmon.ussaas.t24-jumpstart.com/admin/healthcheck"
- - env.name.services: "/middleware/services/"	
- - env.services.url: "https://f2bmon.ussaas.t24-jumpstart.com/services/healthcheck"
- - env.name.on-prem: "/engagement/on-prem"
- - env.on-prem.url: "https://f2bmon.ussaas.t24-jumpstart.com/kpns/service/healthcheck/json"
- - env.name.identity.on-prem: "/identity/on-prem"
- - env.identity.on-prem.url: "https://f2bmon.ussaas.t24-jumpstart.com/authService/v1/manage/checkhealth"
+  - CMON-337: CMON-337.json
+
+CMON-337:
+  - name: "test"
+  - Http.name: "middleware"
+  - url: "https://f2bmon.ussaas.t24-jumpstart.com/admin/healthcheck"
+  - location: "SYNTHETIC_LOCATION-55D54F4C830E60C3"
+  - method:  "GET"
