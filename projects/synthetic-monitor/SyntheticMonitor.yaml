@@ -1,15 +1,11 @@
 config:
  - managementZones: SyntheticMonitor.json
  - env.filename: SyntheticMonitor.json
- - script: SyntheticMonitor.json
-	
-	
+ - script: SyntheticMonitor.json	
 managementZones:
  - env.mgmtzone.name: "f2bmon-dev"
-
 env.filename:
- - env.filename: "SynMonitor"
-	
+ - env.filename: "SynMonitor"	
 script:
  - env.name.admin: "/middleware/admin/"
  - env.admin.url: "https://f2bmon.ussaas.t24-jumpstart.com/admin/healthcheck"
