@@ -1,6 +1,4 @@
 config:
- - managementZones: SyntheticMonitor.json
- - env.filename: SyntheticMonitor.json
  - script: SyntheticMonitor.json	
 managementZones:
  - env.mgmtzone.name: "f2bmon-dev"
