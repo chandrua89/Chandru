@@ -1,6 +1,0 @@
-config:
-    - dashboard: "dashboard.json"
-      
-dashboard:
-    - name: "Cloud 2.0 - Platform Monitoring Dashboard - Template PRB",
-    - owner: "chandru.balu@contractor.temenos.com"
